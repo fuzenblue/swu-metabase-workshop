@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_northwind
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 'your_strong_password_here' # โปรดเปลี่ยนรหัสผ่านนี้
+      MYSQL_DATABASE: 'northwind'
+    ports:
+      - "3306:3306"
+    command: --innodb_buffer_pool_size=1G
+    volumes:
+      - ./northwind.sql:/docker-entrypoint-initdb.d/1-northwind.sql
+      - ./init-user.sql:/docker-entrypoint-initdb.d/2-init-user.sql
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
