@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 version: '3.8'
 
 services:
@@ -17,10 +16,6 @@ services:
       - ./init-user.sql:/docker-entrypoint-initdb.d/2-init-user.sql
       - mysql_data:/var/lib/mysql
 
-volumes:
-  mysql_data:
-=======
-services:
   metabase:
     build:
       context: .
@@ -36,6 +31,5 @@ services:
     restart: unless-stopped
 
 volumes:
+  mysql_data:
   metabase-data:
-
->>>>>>> e76991c (update workshop configuration)
